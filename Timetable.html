@@ -37,23 +37,43 @@
                 <th>Route</th>
                 <th>Time</th>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>faizabad</td>
-                <td>2:00</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>baharku</td>
-                <td>4:00</td>
-            </tr>
-            <tr>
-                <td>34</td>
-                <td>F-6</td>
-                <td>4:00</td>
-            </tr>
+            
         </table>
 
     </div>
+
+    <script>
+        var userRole = "student"; // Change this value as per your implementation
+    
+        if (userRole === "admin") {
+            
+            document.getElementById("header_2").style.display = "block";
+           
+            document.getElementById("header3").style.display = "block";
+        } else {
+           
+            document.getElementById("header_2").style.display = "none";
+            
+            document.getElementById("header3").style.display = "block";
+           
+            document.querySelectorAll("#header3 h4:not(:last-child)").forEach(function(item) {
+                item.style.display = "none";
+            });
+        }
+    
+        var timetableData = [
+            { busNo: 1, route: "Route A", time: "08:00 AM" },
+            { busNo: 2, route: "Route B", time: "09:30 AM" },
+            { busNo: 3, route: "Route C", time: "11:00 AM" }
+        ];
+    
+        var timetableTable = document.getElementById("view_table").querySelector("table");
+    
+        timetableData.forEach(function(row) {
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<td>" + row.busNo + "</td><td>" + row.route + "</td><td>" + row.time + "</td>";
+            timetableTable.appendChild(tr);
+        });
+    </script>
 </body>
 </html>
